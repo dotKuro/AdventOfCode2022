@@ -1,7 +1,21 @@
 use advent_of_code_2022;
+use std::env;
+use std::process::exit;
 
 fn main() {
-    let day01_result = advent_of_code_2022::day01::task1("./inputs/day01");
+    let args: Vec<String> = env::args().collect();
 
-    println!("day01: {}", day01_result);
+    if args.len() != 2 {}
+
+    let task = args.get(1);
+    let result = match task.map(|value| value.as_str()) {
+        Some("day01/task1") => advent_of_code_2022::day01::task1("./inputs/day01").to_string(),
+        Some("day01/task2") => advent_of_code_2022::day01::task2("./inputs/day01").to_string(),
+        _ => {
+            println!("[usage] aoc2022 dayXY/taskZ");
+            exit(1);
+        }
+    };
+
+    println!("{}: {}", task.unwrap(), result);
 }

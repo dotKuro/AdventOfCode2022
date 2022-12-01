@@ -36,6 +36,7 @@ struct WithMostCaloriesResult {
 
 trait Elves {
     fn with_most_calories(&self) -> WithMostCaloriesResult;
+    fn to_calorie_sums(&self) -> Vec<i32>;
 }
 
 impl Elves for Vec<Elf> {
@@ -60,6 +61,9 @@ impl Elves for Vec<Elf> {
             elves: elves_with_current_max,
         };
     }
+    fn to_calorie_sums(&self) -> Vec<i32> {
+        self.into_iter().map(|elf| elf.iter().sum()).collect()
+    }
 }
 
 pub fn task1(input_file_path: &str) -> i32 {
@@ -71,4 +75,14 @@ pub fn task1(input_file_path: &str) -> i32 {
     }
 
     return result.calories;
+}
+
+pub fn task2(input_file_path: &str) -> i32 {
+    let elves = get_elves_from_input(input_file_path);
+
+    let mut calorie_sums = elves.to_calorie_sums();
+
+    calorie_sums.sort();
+
+    return calorie_sums.iter().rev().take(3).sum();
 }
