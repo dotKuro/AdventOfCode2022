@@ -5,6 +5,7 @@ pub enum RPSOption {
     Scissors,
 }
 
+#[derive(Copy, Clone)]
 pub enum MatchOutcome {
     Win,
     Draw,

@@ -14,6 +14,9 @@ fn main() {
         Some("day02/task1") => {
             advent_of_code_2022::day02::task1::task1("./inputs/day02").to_string()
         }
+        Some("day02/task2") => {
+            advent_of_code_2022::day02::task2::task2("./inputs/day02").to_string()
+        }
         _ => {
             println!("[usage] aoc2022 dayXY/taskZ");
             exit(1);
